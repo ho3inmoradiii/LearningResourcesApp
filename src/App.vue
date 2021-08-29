@@ -10,8 +10,9 @@
             :title="res.title"
             :description="res.description"
             :link="res.link"
+            v-show="selectedCmp === 'stored-resource'"
     ></stored-resource>
-    <input-resource></input-resource>
+    <input-resource v-show="selectedCmp === 'input-resource'"></input-resource>
 
 </template>
 
