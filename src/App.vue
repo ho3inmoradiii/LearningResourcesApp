@@ -1,5 +1,9 @@
 <template>
     <the-header></the-header>
+
+    <button @click="setSelectedCmp('stored-resource')">لیست منابع آموزشی</button>
+    <button @click="setSelectedCmp('input-resource')">وارد کردن منبع آموزشی</button>
+
     <ul>
         <li v-for="res in resourcedData" :key="res">
             {{ res.title}}
@@ -15,6 +19,7 @@
         },
         data(){
             return{
+                selectedCmp:'stored-resource',
                 resourcedData:[
                     {
                         id:'learning-vue',
@@ -30,7 +35,17 @@
                     },
                 ]
             }
-
+        },
+        methods:{
+            setSelectedCmp(cmp){
+                if (cmp === 'stored-resource'){
+                    console.log(cmp);
+                    this.selectedCmp = 'stored-resource';
+                }else{
+                    console.log(cmp);
+                    this.selectedCmp = 'input-resource';
+                }
+            }
         }
     }
 </script>
