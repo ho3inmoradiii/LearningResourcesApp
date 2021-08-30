@@ -1,17 +1,20 @@
 <template>
     <base-card>
-        <form>
+        <form @submit.prevent="addToResource">
             <div class="form-control">
                 <label>عنوان منبع</label>
-                <input type="text">
+                <input type="text" v-model="title">
             </div>
             <div class="form-control">
                 <label>توضیحاتی در مورد منبع</label>
-                <textarea></textarea>
+                <textarea v-model="description"></textarea>
             </div>
             <div class="form-control">
                 <label>لینک منبع</label>
-                <input type="text">
+                <input type="text" v-model="link">
+            </div>
+            <div class="form-control">
+                <button type="submit">اضافه کردن</button>
             </div>
         </form>
     </base-card>
@@ -22,6 +25,18 @@
     export default {
         components:{
             'base-card':BaseCard,
+        },
+        data(){
+            return{
+                title:'',
+                description:'',
+                link:''
+            }
+        },
+        methods:{
+            addToResource(){
+                this.$emit('add-resource',this.title,this.description,this.link)
+            }
         }
     }
 </script>

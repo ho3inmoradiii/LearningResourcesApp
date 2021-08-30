@@ -12,7 +12,10 @@
             :link="res.link"
             v-show="selectedCmp === 'stored-resource'"
     ></stored-resource>
-    <input-resource v-show="selectedCmp === 'input-resource'"></input-resource>
+    <input-resource
+            v-show="selectedCmp === 'input-resource'"
+            @add-resource = "addResource"
+    ></input-resource>
 
 </template>
 
@@ -53,6 +56,15 @@
                 }else{
                     this.selectedCmp = 'input-resource';
                 }
+            },
+            addResource(titleRes,descriptionRes,linkRes){
+                const resource = {
+                    id:titleRes.concat(linkRes),
+                    title:titleRes,
+                    description:descriptionRes,
+                    link:linkRes
+                }
+                this.resourcedData.push(resource);
             }
         }
     }
