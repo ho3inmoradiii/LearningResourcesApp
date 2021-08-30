@@ -1,8 +1,7 @@
 <template>
     <the-header></the-header>
 
-    <button @click="setSelectedCmp('stored-resource')">لیست منابع آموزشی</button>
-    <button @click="setSelectedCmp('input-resource')">وارد کردن منبع آموزشی</button>
+    <the-button @selected-cmp="setSelectedCmp" :selected-Cmp="selectedCmp"></the-button>
 
     <stored-resource
             v-for="res in resourcedData"
@@ -23,12 +22,14 @@
     import TheHeader from './components/UI/Header';
     import StoredResource from './components/StoredResource';
     import InputResource from './components/InputResource';
+    import TheButton from "./components/TheButton";
 
     export default{
         components:{
             'the-header':TheHeader,
             'stored-resource':StoredResource,
             'input-resource':InputResource,
+            'the-button':TheButton,
         },
         data(){
             return{
@@ -70,7 +71,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     * {
         box-sizing: border-box;
     }

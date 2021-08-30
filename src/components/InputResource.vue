@@ -2,15 +2,15 @@
     <base-card>
         <form @submit.prevent="addToResource">
             <div class="form-control">
-                <label>عنوان منبع</label>
+                <label>:عنوان منبع</label>
                 <input type="text" v-model="title">
             </div>
             <div class="form-control">
-                <label>توضیحاتی در مورد منبع</label>
+                <label>:توضیحاتی در مورد منبع</label>
                 <textarea v-model="description"></textarea>
             </div>
             <div class="form-control">
-                <label>لینک منبع</label>
+                <label>:لینک منبع</label>
                 <input type="text" v-model="link">
             </div>
             <div class="form-control">
@@ -46,6 +46,7 @@
         font-weight: bold;
         display: block;
         margin-bottom: 0.5rem;
+        text-align: right;
     }
 
     input,
@@ -55,6 +56,7 @@
         font: inherit;
         padding: 0.15rem;
         border: 1px solid #ccc;
+        text-align: right;
     }
 
     input:focus,
