@@ -3,18 +3,22 @@
 
     <the-button @selected-cmp="setSelectedCmp" :selected-Cmp="selectedCmp"></the-button>
 
+    <input-resource
+            v-if="selectedCmp === 'input-resource'"
+            @add-resource = "addResource"
+    ></input-resource>
+
     <stored-resource
             v-for="res in resourcedData"
+            :id="res.id"
             :key="res.id"
             :title="res.title"
             :description="res.description"
             :link="res.link"
             v-show="selectedCmp === 'stored-resource'"
+            @delete-resource="deleteResource"
     ></stored-resource>
-    <input-resource
-            v-show="selectedCmp === 'input-resource'"
-            @add-resource = "addResource"
-    ></input-resource>
+
 
 </template>
 
@@ -66,6 +70,10 @@
                     link:linkRes
                 }
                 this.resourcedData.push(resource);
+            },
+            deleteResource(resId){
+                //const identifiedResource = this.resourcedData.find(resource => resource.id===resId);
+                this.resourcedData = this.resourcedData.filter(resource => resource.id !== resId);
             }
         }
     }
